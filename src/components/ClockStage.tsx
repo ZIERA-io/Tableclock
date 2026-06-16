@@ -73,6 +73,7 @@ export function ClockStage({ config, panelOpen, onOpenPanel }: Props) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          transform: `scale(${(config.clockScale ?? 100) / 100})`,
         }}
       >
         {config.type === 'analog' ? (

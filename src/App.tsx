@@ -7,11 +7,11 @@ export default function App() {
   const {
     config, update, updateColors, updateLogo,
     encodeToUrl, pushToHash,
-    isSharedView, slugLoading,
+    slugLoading,
     currentSlug, setCurrentSlug,
   } = useClockConfig();
 
-  const [panelOpen, setPanelOpen] = useState(!isSharedView);
+  const [panelOpen, setPanelOpen] = useState(false);
 
   if (slugLoading) {
     return (

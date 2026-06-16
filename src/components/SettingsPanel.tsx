@@ -409,6 +409,19 @@ export function SettingsPanel({
               />
             </div>
 
+            {/* 시계 크기 */}
+            <div className="field">
+              <label>시계 크기 ({config.clockScale ?? 100}%)</label>
+              <input
+                type="range"
+                min={40}
+                max={130}
+                step={5}
+                value={config.clockScale ?? 100}
+                onChange={(e) => onUpdate({ clockScale: Number(e.target.value) })}
+              />
+            </div>
+
             {/* 공통 옵션 */}
             <div className="toggle">
               <span>초침 표시</span>
