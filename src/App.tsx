@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { ClockStage } from './components/ClockStage';
 import { SettingsPanel } from './components/SettingsPanel';
 import { useClockConfig } from './hooks/useClockConfig';
+import { T } from './i18n';
 
 export default function App() {
   const {
@@ -14,6 +16,7 @@ export default function App() {
   const [panelOpen, setPanelOpen] = useState(false);
 
   if (slugLoading) {
+    const t = T[config.lang ?? 'ko'];
     return (
       <div style={{
         position: 'fixed', inset: 0,
@@ -21,7 +24,7 @@ export default function App() {
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         color: '#9a9aa8', fontSize: '1.2rem', fontFamily: 'sans-serif',
       }}>
-        불러오는 중…
+        {t.loading}
       </div>
     );
   }
@@ -45,6 +48,7 @@ export default function App() {
         currentSlug={currentSlug}
         setCurrentSlug={setCurrentSlug}
       />
+      <Analytics />
     </>
   );
 }

@@ -24,7 +24,8 @@ export interface ClockConfig {
   numerals: boolean;
   h24: boolean;
   ampmInline: boolean;
-  clockScale: number; // 시계 크기 % (기본 100)
+  clockScale: number;
+  lang: 'ko' | 'en' | 'ja' | 'zh';
   font: string;
   tz: string;
   title: string;
@@ -50,6 +51,7 @@ export const DEFAULT_CONFIG: ClockConfig = {
   h24: false,
   ampmInline: false,
   clockScale: 100,
+  lang: 'ko',
   font: "-apple-system, 'Pretendard', sans-serif",
   tz: 'local',
   title: '',

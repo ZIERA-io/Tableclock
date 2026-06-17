@@ -25,3 +25,16 @@ export async function loadConfigFromSlug(slug: string): Promise<Partial<ClockCon
     .maybeSingle();
   return (data?.config as Partial<ClockConfig>) ?? null;
 }
+
+export async function uploadLogo(file: File): Promise<string> {
+  if (!supabase) throw new Error('Supabase not configured');
+  const ext = file.name.split('.').pop()?.toLowerCase() ?? 'png';
+  const name = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+  const { error } = await supabase.storage.from('logos').upload(name, file, {
+    cacheControl: '31536000',
+    upsert: false,
+  });
+  if (error) throw new Error(error.message);
+  const { data } = supabase.storage.from('logos').getPublicUrl(name);
+  return data.publicUrl;
+}

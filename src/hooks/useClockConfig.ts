@@ -33,7 +33,7 @@ interface ParsedInit {
   initSlug: string | null;
 }
 
-const PATH_SLUG_RE = /^\/a\/([a-z0-9][a-z0-9-]{1,48}[a-z0-9])$/;
+const PATH_SLUG_RE = /^\/([a-z0-9][a-z0-9-]{1,48}[a-z0-9])$/;
 
 function parseInit(): ParsedInit {
   // 1) 경로 기반: /a/<slug>

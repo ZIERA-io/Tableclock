@@ -71,7 +71,7 @@ export function useCustomLink() {
         }
 
         setSavedSlug(slug);
-        return `${location.origin}/a/${slug}`;
+        return `${location.origin}/${slug}`;
       } finally {
         setSaving(false);
       }
